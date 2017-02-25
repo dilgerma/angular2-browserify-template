@@ -1,21 +1,25 @@
 import * as gulp from "gulp";
 import * as browserify from "browserify";
 import * as source from "vinyl-source-stream";
-import * as watchify from "watchify";
 import * as gulpUtil from "gulp-util";
-import * as uglify from "gulp-uglify";
 import * as  sourcemaps from "gulp-sourcemaps";
 import * as  buffer from "vinyl-buffer";
 import * as babelify from "babelify";
 
+
 var tsify: any = require("tsify");
+var sass = require('gulp-sass');
+var watch = require('gulp-watch');
 
 
 const config = {
+    tsPath: "src/main/typescript",
     mainPath: "src/main/typescript/main.ts",
+    cssSrcPath: "src/main/sass",
     baseDir: ".",
     distFile: 'application.js',
     distDir: "build/resources/main/static/js",
+    distCssDir: "build/resources/main/static/css",
     libDir: "build/resources/main/static/js",
     modulesDir: "node_modules"
 };
@@ -32,7 +36,7 @@ function browerifyInit() {
 
 }
 
-function bundle(browserifyLike: any) {
+function bundleJS(browserifyLike: any) {
 
     return browserifyLike
         .bundle()
@@ -48,6 +52,12 @@ function bundle(browserifyLike: any) {
         .pipe(gulp.dest(config.distDir));
 }
 
+function bundleCSS() {
+    return gulp.src(config.cssSrcPath + "/*.scss")
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(gulp.dest(config.distCssDir))
+}
+
 function configureTsify(browserifyLike: any) {
     return browserifyLike
         .plugin(tsify, {
@@ -60,7 +70,7 @@ function configureTsify(browserifyLike: any) {
             ignore: /\/node_modules\/(?!@angular\/)/,
             presets: [
                 "es2015"
-                ],
+            ],
             plugins: [
                 "angular2-annotations",
                 "transform-decorators-legacy",
@@ -72,18 +82,22 @@ function configureTsify(browserifyLike: any) {
 }
 
 gulp.task("build", () => {
-    bundle(configureTsify(browerifyInit()));
+    bundleCSS();
+    bundleJS(configureTsify(browerifyInit()));
 });
 
 gulp.task("build:watch", () => {
-    var watchedBrowserify = configureTsify(watchify(browerifyInit()));
-    bundle(watchedBrowserify);
-
-    watchedBrowserify.on("update", () => bundle(watchedBrowserify));
-    watchedBrowserify.on("log", gulpUtil.log);
+    return gulp.watch(
+        [
+            config.cssSrcPath + "/**/*.scss",
+            config.tsPath + "/**/*.ts"
+        ]
+        , ['build']);
 });
 
 gulp.task("watch", ["build:watch"]);
 
-gulp.task("default", ["build:bundle"]);
+gulp.task("default", ["build"]);
+
+
 

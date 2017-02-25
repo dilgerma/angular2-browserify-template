@@ -30,6 +30,7 @@ repositories {
 }
 
 node {
+	version = '7.6.0'
   // Version of node to use.
   yarnVersion = '0.16.1'
 
@@ -50,7 +51,6 @@ node {
   nodeModulesDir = file("${project.projectDir}")
 }
 
-gulp_build.dependsOn yarn_install
 processResources.dependsOn gulp_build
 
 dependencies {
@@ -58,6 +58,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-hateoas')
 	compile('com.google.guava:guava-parent:19.0')
 	compile('org.projectlombok:lombok:1.16.10')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.0')

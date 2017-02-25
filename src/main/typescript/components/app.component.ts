@@ -1,9 +1,6 @@
 import {
-    Component, ElementRef, ViewChild,
-    AfterViewInit, AfterContentChecked, OnInit, OnChanges, SimpleChanges, AfterViewChecked
+    Component, AfterViewInit, OnInit
 } from "@angular/core";
-import * as $ from "jquery";
-import {Observable, Subject} from "rxjs";
 
 @Component({
     selector: 'app',
