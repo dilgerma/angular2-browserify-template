@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Effective Trainings Teleprompter</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+    <link href="/libs/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/libs/bootstrap-3.3.4-dist/css/bootstrap-theme.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/js/application.js"/>
+</head>
+<body>
+<h3>Effective Trainings</h3>
+<table>
+    <tr data-th-each="line : ${lines}">
+        <td data-th-text="${line.content}"></td>
+    </tr>
+</table>
+</body>
+</html>

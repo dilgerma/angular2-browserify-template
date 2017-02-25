@@ -1,0 +1,140 @@
+: 1486205152:0;echo "as"
+: 1486205158:0;cat ~/.zsh_history
+: 1486206184:0;git credentials shoqw
+: 1486206187:0;git credentials show
+: 1486206190:0;git credential show
+: 1486206197:0;git credential --help
+: 1486206263:0;git config --global -l
+: 1486206266:0;git config --global -l | grep cre
+: 1486206276:0;cd ~/development/git/projects
+: 1486206277:0;ls
+: 1486206277:0;cd ..
+: 1486206279:0;cd workshops/git
+: 1486206279:0;ls
+: 1486206282:0;cd ..
+: 1486206282:0;ls
+: 1486206284:0;cd docker
+: 1486206284:0;ls
+: 1486206287:0;cd slides
+: 1486206288:0;git fetch
+: 1486206294:0;git config -l
+: 1486206301:0;git config -l | grep cred
+: 1486206329:0;git credential-osxkeychain
+: 1486206334:0;git credential-osxkeychain get
+: 1486206350:0;git credential-osxkeychain erase
+: 1486206397:0;git credential-store --help
+: 1486206415:0;cat ~/.git-credential
+: 1486206416:0;cat ~/.git-credentials
+: 1486206425:0;rm ~/.git-credentials
+: 1486206441:0;git config credentials.helper cache
+: 1486206444:0;git fetch
+: 1486206454:0;cat .git/config
+: 1486206479:0;git config --unset credential.helper
+: 1486206482:0;git config --unset credentials.helper
+: 1486206488:0;git config --get credential.helper
+: 1486206498:0;git config --global --unset credential.helper
+: 1486206500:0;git config --get credential.helper
+: 1486206512:0;git config --unsetcredential.helper
+: 1486206514:0;git config --unset credential.helper
+: 1486206516:0;git config --get credential.helper
+: 1486206526:0;git config --system --unset credential.helper
+: 1486206528:0;git config --get credential.helper
+: 1486206538:0;git config --system --edit
+: 1486206556:0;cat /usr/local/etc/gitconfig
+: 1486206597:0;git config credential.helper store
+: 1486206602:0;git fetch
+: 1486206631:0;cat ~/.git-credentials
+: 1486206646:0;git credential-cache
+: 1486206652:0;git credential-cache --timeout 5
+: 1486206662:0;git credential-cache --timeout 5
+: 1486206667:0;man git credential-cache
+: 1486206671:0;man git-credential-cache
+: 1486206692:0;brew upgrade git
+: 1486206721:0;git config -l
+: 1486206725:0;git config -l | grep credential
+: 1486206733:0;git config --unset credential.helper
+: 1486206739:0;git config --system --unset credential.helper
+: 1486206744:0;sudo vi ~/.zshrc
+: 1486206758:0;grep "credential.helper" . -R
+: 1486206782:0;git config --global --unset credential.helper
+: 1486206788:0;git config --global --get credential.helper
+: 1486206792:0;git config --system --get credential.helper
+: 1486206799:0;git config --local --get credential.helper
+: 1486206804:0;git config --get credential.helper
+: 1486206808:0;exit
+: 1486206890:0;man git-credential-cache
+: 1486208977:0;ssh root@scaleway
+: 1486209811:0;git config --global core.eol
+: 1486210762:0;sudo vi ~/development/scripts/init-training.sh
+: 1486210769:0;vi ~/development/scripts/init-training.sh
+: 1486210820:0;chmod +x ~/development/scripts/init-training.sh
+: 1486210823:0;init-docker-toolbox.sh
+: 1486210826:0;bash
+: 1486210828:0;init-training.sh
+: 1486213710:0;git config --global -l
+: 1486213736:0;git config --global --unset user.nme
+: 1486213750:0;git config --global --unset core.editor
+: 1486213756:0;git config --global --unset push.default
+: 1486213771:0;git log
+: 1486213773:0;cd /zm
+: 1486213776:0;cd /mtm
+: 1486213780:0;cd /tmp
+: 1486213782:0;mkdir git
+: 1486213784:0;cd git
+: 1486213785:0;git log
+: 1486213833:0;git log --pretty="%an %p %s"
+: 1486213838:0;git log --pretty="%an %p %s %m"
+: 1486213842:0;git log --pretty="%an %p %s %h"
+: 1486213870:0;cat ~/.stCommitMsg
+: 1486213878:0;ls
+: 1486213882:0;vi file1.1.txt
+: 1486213885:0;git add .
+: 1486213887:0;git commit
+: 1486213893:0;cd /tmp/git
+: 1486213894:0;cd .git
+: 1486213894:0;ls
+: 1486213897:0;cat CO
+: 1486213900:0;cat COMMIT_EDITMSG
+: 1486213908:0;vi COMMIT_EDITMSG
+: 1486213926:0;git log
+: 1486213943:0;git config pretty.format="%an %s"
+: 1486213962:0;git config user.nms="%an %s"
+: 1486213965:0;git config user.name="%an %s"
+: 1486213969:0;git config user.name=test
+: 1486213977:0;git config pretty.format "%an %s"
+: 1486213978:0;git log
+: 1486213982:0;git log --oneline
+: 1486214059:0;cd ..
+: 1486214065:0;git clone https://github.com/git/git.git test-git
+: 1486214110:0;man git-config
+: 1486214158:0;git show
+: 1486214160:0;cd /tmp/git
+: 1486214161:0;git show
+: 1486214181:0;git show --help
+: 1486214191:0;git show --pretty="%an"
+: 1486214195:0;git show --pretty="%h"
+: 1486214245:0;git config --global format.pretty="%an"
+: 1486214248:0;git config --global format.pretty "%an"
+: 1486214249:0;git log
+: 1486214258:0;git config --global format.pretty "%an %s %h"
+: 1486214260:0;git log
+: 1486214273:0;git config --global --unset format.pretty
+: 1486226689:0;git --version
+: 1486226693:0;git worktree --help
+: 1486226710:0;cd .
+: 1486226712:0;cd ..
+: 1486226723:0;cd workshops/git/git-workshop
+: 1486226724:0;ls
+: 1486226726:0;cd uebungen
+: 1486226726:0;ls
+: 1486226822:0;cp
+: 1486226827:0;cat uebungen-2.d
+: 1486226829:0;cat uebungen-2.adoc
+: 1486226835:0;ls
+: 1486226877:0;cp basics-reset.adoc basics-worktree.adoc
+: 1486226887:0;open -a TextWrangler basics-worktree.adoc
+: 1486232527:0;cd ~/development/git/projects
+: 1486232542:0;mv ~/Downloads/teleprompter.zip .
+: 1486232544:0;unzip teleprompter.zip
+: 1486232630:0;less ~/.zsh_history
+: 1486232644:0;pbcopy < ~/.zsh_history
