@@ -1,5 +1,6 @@
 import * as gulp from "gulp";
 import * as browserify from "browserify";
+import * as watchify from "watchify"
 import * as source from "vinyl-source-stream";
 import * as gulpUtil from "gulp-util";
 import * as  sourcemaps from "gulp-sourcemaps";
@@ -10,6 +11,8 @@ import * as babelify from "babelify";
 var tsify: any = require("tsify");
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
+var embedTemplates = require('gulp-angular-embed-templates');
+
 
 
 const config = {
@@ -24,7 +27,7 @@ const config = {
     modulesDir: "node_modules"
 };
 
-function browerifyInit() {
+function browserifyInit(): any {
     return browserify({
         basedir: config.baseDir,
         debug: true,
@@ -58,14 +61,36 @@ function bundleCSS() {
         .pipe(gulp.dest(config.distCssDir))
 }
 
+function configureTemplateInlining() {
+
+// // ng2inlinetransform.js
+var ng2TemplateParser = require('gulp-inline-ng2-template/parser');
+var through = require('through2');
+var options = {target: 'es5'};
+//
+function inlineTemplates(file:any) {
+  return through(function (buf:any, enc:any, next:any){
+    ng2TemplateParser({contents: buf, path: file}, options)((err:any, result:any) => {
+      this.push(result);
+      process.nextTick(next);
+    });
+  });
+}
+return inlineTemplates;
+}
+
+
 function configureTsify(browserifyLike: any) {
+    var inlineTemplates = configureTemplateInlining();
     return browserifyLike
         .plugin(tsify, {
             module: "commonjs",
             target: "es6",
             path: "tsconfig.json",
             extensions: ['.ts']
-        }).transform(babelify, {
+        })
+        .transform(inlineTemplates)
+        .transform(babelify, {
             global: true,
             ignore: /\/node_modules\/(?!@angular\/)/,
             presets: [
@@ -81,23 +106,36 @@ function configureTsify(browserifyLike: any) {
         });
 }
 
-gulp.task("build", () => {
+gulp.task("build", ["css", "js"]);
+
+gulp.task("css", () => {
     bundleCSS();
-    bundleJS(configureTsify(browerifyInit()));
+});
+
+gulp.task("js", () => {
+    bundleJS(bundler);
 });
 
 gulp.task("build:watch", () => {
-    return gulp.watch(
+    gulp.watch(
         [
             config.cssSrcPath + "/**/*.scss",
-            config.tsPath + "/**/*.ts"
         ]
-        , ['build']);
+        , ['css']);
+
+    var watchedBrowserify = configureTsify(watchify(browserifyInit()));
+    bundleJS(watchedBrowserify);
+    watchedBrowserify.on("update", () => bundleJS(watchedBrowserify));
+    watchedBrowserify.on("log", gulpUtil.log);
+
 });
+
+var bundler = configureTsify(browserifyInit());
 
 gulp.task("watch", ["build:watch"]);
 
 gulp.task("default", ["build"]);
+
 
 
 

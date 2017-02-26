@@ -1,4 +1,3 @@
-
 "use strict";
 
 import * as $ from "jquery";
@@ -12,16 +11,22 @@ import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
-import {AppComponent} from "./components/app.component";
+import {AppComponent} from "./components/app-component";
+import {LinkService} from "./support/LinkService";
+import {LoggerService} from "./support/LoggerService";
+import {EventsService} from "./service/EventsService";
+import {ApplicationState} from "./service/ApplicationState";
+import {LogConfig} from "./support/LogConfig";
 
 @NgModule({
-    imports: [ BrowserModule, HttpModule],
+    imports: [BrowserModule, HttpModule],
     declarations: [AppComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [LogConfig,  LinkService, ApplicationState, EventsService, LoggerService, {provide: 'Window', useValue: window}]
+
 })
 class AppModule {
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
     platformBrowserDynamic()
