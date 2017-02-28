@@ -61,7 +61,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-hateoas')
 	compile('com.google.guava:guava-parent:19.0')
 	compile('org.projectlombok:lombok:1.16.10')
-    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.0')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.7')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.8.7')
+
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

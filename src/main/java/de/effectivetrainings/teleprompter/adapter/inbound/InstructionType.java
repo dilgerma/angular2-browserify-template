@@ -6,7 +6,9 @@ public enum InstructionType {
 
     SESSION_CREATED("session_created"),
     SESSION_DESTROYED("session_destroyed"),
-    HINT_APPLIED("hint");
+    HINT_APPLIED("hint"),
+    EXERCISE_STARTED("exercise_started"),
+    EXERCISE_STOPPED("exercise_stopped");
 
     private String type;
 

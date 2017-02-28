@@ -4,6 +4,7 @@ import de.effectivetrainings.teleprompter.domain.Event;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class InMemoryEventStore implements EventStore {
@@ -18,6 +19,11 @@ public class InMemoryEventStore implements EventStore {
     @Override
     public List<Event> events(String key) {
         return this.events.stream().filter(event -> event.getKey().equals(key)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Event> events(String key, Predicate<Event> predicate) {
+        return events(key).stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override

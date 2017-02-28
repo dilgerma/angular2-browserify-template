@@ -8,30 +8,34 @@ import {Observable} from "rxjs";
 import {EventsService} from "../service/EventsService";
 import {ApplicationState} from "../service/ApplicationState";
 import {LoggerService} from "../support/LoggerService";
+import {TimeElapsed} from "../filter/TimeElapsed";
+import {Entry} from "../domain/Entry";
 
 @Component({
     selector: 'app',
-    // template: '<a (click)=submit()>sendRequest</a>'
-    templateUrl: 'src/main/typescript/components/app-component.html'
+    templateUrl: 'src/main/typescript/components/app-component.html',
 })
-export class AppComponent implements OnInit, AfterViewInit{
+export class AppComponent implements OnInit, AfterViewInit {
 
-    constructor(private eventService:EventsService, private loggerService:LoggerService, public applicationState:ApplicationState,private ngZone: NgZone) {
-        Observable.interval(2000) q
-                         .subscribe((x) => {
-                             this.ngZone.run(()=>this.submit());
-                         });
+    constructor(private eventService: EventsService, private loggerService: LoggerService, public applicationState: ApplicationState, private ngZone: NgZone) {
     }
 
     public submit() {
         this.eventService.requestEvents();
+        this.eventService.requestExercises();
     }
 
 
-    ngOnInit(): void{
+
+    ngOnInit(): void {
     }
 
     ngAfterViewInit(): void {
+        Observable.interval(5000)
+            .subscribe((x) => {
+                this.ngZone.run(() => this.submit());
+            });
+
     }
 
 }

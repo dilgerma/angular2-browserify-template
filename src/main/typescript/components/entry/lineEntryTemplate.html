@@ -1,0 +1,9 @@
+<div class="col-md-4">
+    <a (click)="applyDescription(entry)">{{entry.content}}</a>
+</div>
+<div class="col-md-4">
+    <label>{{entry.date | date:'HH:mm:ss'}}</label>
+</div>
+<div class="col-md-4">
+    <label>vor {{entry.date | timeElapsed}} Minuten</label>
+</div>

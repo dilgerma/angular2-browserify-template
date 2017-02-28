@@ -1,6 +1,4 @@
 export class Entry {
 
-    private lineNumber:Number;
-    private content:string;
-    private date:Date;
+    constructor(public content:string, public date:Date, public lineNumber:number, public description: string) {}
 }

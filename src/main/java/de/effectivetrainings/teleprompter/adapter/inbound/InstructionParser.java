@@ -9,7 +9,7 @@ public class InstructionParser {
     public static final String INSTRUCTION_DELIMITER = "###";
 
     //### type key value => ### format Hinweis Das ist ein wichtiger Hinweis
-    private final Pattern instructionPattern = Pattern.compile(INSTRUCTION_DELIMITER + " (\\w+) (\\w+) (\\w+.*)");
+    private final Pattern instructionPattern = Pattern.compile(INSTRUCTION_DELIMITER + " ([\\w_-]+) ([\\w_-]+) (\\w+.*)");
 
     public Optional<Instruction> instruction(String line) {
         final Matcher matcher = instructionPattern.matcher(line);

@@ -17,13 +17,20 @@ import {LoggerService} from "./support/LoggerService";
 import {EventsService} from "./service/EventsService";
 import {ApplicationState} from "./service/ApplicationState";
 import {LogConfig} from "./support/LogConfig";
+import {TimeElapsed} from "./filter/TimeElapsed";
+import {DescriptionComponent} from "./components/description/descriptionComponent";
+import {ExercisesComponent} from "./components/exercises/ExercisesComponent";
+import {LineEntryCompoent} from "./components/entry/LineEntryCompoent";
+
+var jQuery = require('jquery');
+require('bootstrap-sass');
+jQuery.noConflict(true);
 
 @NgModule({
     imports: [BrowserModule, HttpModule],
-    declarations: [AppComponent],
+    declarations: [AppComponent, DescriptionComponent, ExercisesComponent, TimeElapsed, LineEntryCompoent],
     bootstrap: [AppComponent],
-    providers: [LogConfig,  LinkService, ApplicationState, EventsService, LoggerService, {provide: 'Window', useValue: window}]
-
+    providers: [LogConfig,  LinkService, ApplicationState, EventsService, LoggerService, {provide: 'Window', useValue: window}],
 })
 class AppModule {
 }

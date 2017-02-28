@@ -1,0 +1,19 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div *ngFor="let exercise of exercises();let i = index" class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#exercise-collapse-{{i}}"
+                   aria-expanded="true" aria-controls="collapseOne">
+                    {{exercise.name}}
+                </a>
+            </h4>
+        </div>
+            <div id="exercise-collapse-{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div *ngFor="let entry of exercise.entries">
+                    <line-entry [entry]="entry"></line-entry>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

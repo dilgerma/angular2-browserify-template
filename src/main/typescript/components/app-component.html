@@ -1,17 +1,14 @@
 <div>
-    <div class="col-md-8">
-    <ul class="list-group">
-        <li class="" *ngFor="let entry of applicationState.entries">
-            <span>
-                <a href="#">{{entry.content}}</a>
-            </span>
-            <span>
-                <label>{{entry.date}}</label>
-            </span>
-        </li>
-    </ul>
+    <div class="row">
+        <description class="col-md-12">
+        </description>
     </div>
-    <div class="col-md-4">
-        das ist ein Test
+    <div class="row">
+        <div class="col-md-6">
+            <div class="" *ngFor="let entry of applicationState.entries">
+                <line-entry [entry]="entry"></line-entry>
+            </div>
+        </div>
+        <exercises class="col-md-6"></exercises>
     </div>
 </div>

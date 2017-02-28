@@ -1,19 +1,18 @@
 package de.effectivetrainings.teleprompter.adapter.outbound.rest;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Optional;
 
 @Builder
 @Data
 public class ViewEntry {
 
-    @JsonFormat
-          (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private LocalDateTime localDateTime;
+    private Date localDateTime;
     private String content;
     private int lineNumber;
+    private Optional<String> description;
 
 }

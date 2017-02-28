@@ -1,8 +1,12 @@
-package de.effectivetrainings.teleprompter.adapter.outbound.rest;
+package de.effectivetrainings.teleprompter.adapter.outbound.rest.displaylines;
 
+import de.effectivetrainings.teleprompter.adapter.outbound.rest.SessionConfig;
+import de.effectivetrainings.teleprompter.adapter.outbound.rest.ViewRendererConfig;
+import de.effectivetrainings.teleprompter.adapter.outbound.rest.exercises.TeleprompterExercisesRestAdapter;
 import de.effectivetrainings.teleprompter.domain.Event;
 import de.effectivetrainings.teleprompter.infrastructure.EventStore;
 import lombok.NonNull;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +37,9 @@ public class TeleprompterLineViewAdapter {
         Map<String, Object> model = new HashMap<>();
         SessionConfig resourceSupport = new SessionConfig(sessionId);
         resourceSupport.add(linkTo(methodOn(TeleprompterLineViewAdapter.class).modelAndView(sessionId)).withSelfRel());
-        resourceSupport.add(linkTo(methodOn(TeleprompterRestAdapter.class).entries(sessionId)).withRel("view"));
+        resourceSupport.add(ControllerLinkBuilder
+                .linkTo(methodOn(TeleprompterRestAdapter.class).entries(sessionId)).withRel("view"));
+        resourceSupport.add(ControllerLinkBuilder.linkTo(methodOn(TeleprompterExercisesRestAdapter.class).entries(sessionId)).withRel("exercises"));
         model.put("pageConfig", resourceSupport);
         return new ModelAndView("index",  model);
     }
