@@ -2,6 +2,7 @@ package de.effectivetrainings.teleprompter.adapter.outbound.rest.displaylines;
 
 import de.effectivetrainings.teleprompter.adapter.outbound.rest.SessionConfig;
 import de.effectivetrainings.teleprompter.adapter.outbound.rest.ViewRendererConfig;
+import de.effectivetrainings.teleprompter.adapter.outbound.rest.counter.CommandCounterRestAdapter;
 import de.effectivetrainings.teleprompter.adapter.outbound.rest.exercises.TeleprompterExercisesRestAdapter;
 import de.effectivetrainings.teleprompter.domain.Event;
 import de.effectivetrainings.teleprompter.infrastructure.EventStore;
@@ -40,6 +41,7 @@ public class TeleprompterLineViewAdapter {
         resourceSupport.add(ControllerLinkBuilder
                 .linkTo(methodOn(TeleprompterRestAdapter.class).entries(sessionId)).withRel("view"));
         resourceSupport.add(ControllerLinkBuilder.linkTo(methodOn(TeleprompterExercisesRestAdapter.class).entries(sessionId)).withRel("exercises"));
+        resourceSupport.add(ControllerLinkBuilder.linkTo(methodOn(CommandCounterRestAdapter.class).entries(sessionId)).withRel("commands"));
         model.put("pageConfig", resourceSupport);
         return new ModelAndView("index",  model);
     }

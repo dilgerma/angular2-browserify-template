@@ -1,0 +1,5 @@
+<div class="col-md-4">
+    <div *ngFor="let prop of applicationState.counts | keys">
+        {{prop}} {{applicationState.counts[prop]}}
+    </div>
+</div>

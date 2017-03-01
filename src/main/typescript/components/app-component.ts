@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public submit() {
         this.eventService.requestEvents();
         this.eventService.requestExercises();
+        this.eventService.requestCounts();
     }
 
 

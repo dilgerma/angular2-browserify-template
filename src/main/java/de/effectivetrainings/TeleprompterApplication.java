@@ -9,6 +9,7 @@ import de.effectivetrainings.teleprompter.adapter.inbound.LineReadHandler;
 import de.effectivetrainings.teleprompter.adapter.inbound.ZshHistoryLineParser;
 import de.effectivetrainings.teleprompter.adapter.inbound.file.ZshrcHistoryFileSource;
 import de.effectivetrainings.teleprompter.adapter.inbound.rest.RestInboundAdapter;
+import de.effectivetrainings.teleprompter.adapter.outbound.rest.counter.CommandCounterRestAdapter;
 import de.effectivetrainings.teleprompter.adapter.outbound.rest.displaylines.TeleprompterLineViewAdapter;
 import de.effectivetrainings.teleprompter.adapter.outbound.rest.displaylines.TeleprompterRestAdapter;
 import de.effectivetrainings.teleprompter.adapter.outbound.rest.ViewRendererConfig;
@@ -100,6 +101,11 @@ public class TeleprompterApplication {
 		@Bean
 		public TeleprompterExercisesRestAdapter teleprompterExercisesRestAdapter(){
 			return new TeleprompterExercisesRestAdapter(eventStore, viewRendererConfig(), descriptionRepository);
+		}
+
+		@Bean
+		public CommandCounterRestAdapter commandCounterRestAdapter() {
+			return new CommandCounterRestAdapter(eventStore);
 		}
 
 		@Bean

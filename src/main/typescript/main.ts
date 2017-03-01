@@ -21,6 +21,8 @@ import {TimeElapsed} from "./filter/TimeElapsed";
 import {DescriptionComponent} from "./components/description/descriptionComponent";
 import {ExercisesComponent} from "./components/exercises/ExercisesComponent";
 import {LineEntryCompoent} from "./components/entry/LineEntryCompoent";
+import {CommandCountsComponent} from "./components/commands/CommandCountsComponent";
+import {ObjectKeyPipe} from "./components/commands/ObjectKeyPipe";
 
 var jQuery = require('jquery');
 require('bootstrap-sass');
@@ -28,7 +30,7 @@ jQuery.noConflict(true);
 
 @NgModule({
     imports: [BrowserModule, HttpModule],
-    declarations: [AppComponent, DescriptionComponent, ExercisesComponent, TimeElapsed, LineEntryCompoent],
+    declarations: [AppComponent, DescriptionComponent, ExercisesComponent, TimeElapsed, LineEntryCompoent, CommandCountsComponent, ObjectKeyPipe],
     bootstrap: [AppComponent],
     providers: [LogConfig,  LinkService, ApplicationState, EventsService, LoggerService, {provide: 'Window', useValue: window}],
 })

@@ -59,4 +59,17 @@ export class EventsService {
         //new Entry(entry.content, new Date(entry.localDateTime), entry.lineNumber,);
         return e;
     }
+
+    public requestCounts() {
+        var res: Promise<Response> = this.linkService.call((<any>this.window).pageResource, "commands");
+          res.then((r) => {
+              var payload = r.json();
+              this.loggerService.info("received response {0}", [payload]);
+
+              this.applicationState.counts = payload;
+
+          }).catch((r) => {
+              this.loggerService.warn("Received error {0}", [r])
+          });
+    }
 }

@@ -8,4 +8,5 @@ export class ApplicationState {
     public entries:Entry[] = [];
     public currentlyDisplayedDescription:string;
     public exercises:Exercise[];
+    public counts: any;
 }
